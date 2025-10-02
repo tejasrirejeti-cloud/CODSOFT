@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1597a5 0%, #5433ff 35%, #a445b2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  .calculator {
+    background: #18181b;
+    border-radius: 15px;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+    padding: 30px 25px 25px 25px;
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .display {
+    width: 100%;
+    height: 48px;
+    background: #222;
+    color: #00fff7;
+    font-size: 2rem;
+    border: none;
+    text-align: right;
+    border-radius: 7px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    pointer-events: none;
+    outline: none;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 54px);
+    grid-template-rows: repeat(5, 54px);
+    gap: 10px;
+  }
+  .btn {
+    background: #222;
+    border: none;
+    color: #00fff7;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn.pink {
+    background: #ea00d9;
+    color: #fff;
+    font-weight: bold;
+  }
+  .btn:active {
+    filter: brightness(85%);
+  }
+  .btn.equal {
+    grid-column: 4;
+    grid-row: 5;
+    background: #ea00d9;
+    color: #fff;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" class="display" id="display" value="0" readonly />
+    <div class="buttons">
+      <button class="btn pink" data-action="clear">C</button>
+      <button class="btn" data-value="7">7</button>
+      <button class="btn" data-value="8">8</button>
+      <button class="btn" data-value="9">9</button>
+
+      <button class="btn pink" data-value="+">+</button>
+      <button class="btn" data-value="4">4</button>
+      <button class="btn" data-value="5">5</button>
+      <button class="btn" data-value="6">6</button>
+
+      <button class="btn pink" data-value="*">×</button>
+      <button class="btn" data-value="1">1</button>
+      <button class="btn" data-value="2">2</button>
+      <button class="btn" data-value="3">3</button>
+
+      <button class="btn pink" data-value="-">−</button>
+      <button class="btn" data-value="0">0</button>
+      <button class="btn" data-value=".">.</button>
+      <button class="btn" data-value="/">÷</button>
+
+      <button class="btn pink equal" data-action="equal">=</button>
+    </div>
+  </div>
+<script>
+  const display = document.getElementById("display");
+  let current = "";
+  let resetNext = false;
+
+  function updateDisplay() {
+    display.value = current || "0";
+  }
+
+  document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const val = btn.getAttribute("data-value");
+      const action = btn.getAttribute("data-action");
+
+      if (action === "clear") {
+        current = "";
+        updateDisplay();
+        return;
+      }
+
+      if (action === "equal") {
+        try {
+          let result = eval(
+            current.replace(/÷/g, "/").replace(/×/g, "*").replace(/−/g, "-")
+          );
+          // Prevents display of undefined/empty results
+          current = (result !== undefined) ? result.toString() : "";
+        } catch {
+          current = "Error";
+        }
+        updateDisplay();
+        resetNext = true;
+        return;
+      }
+
+      // After evaluation, start new entry if entering a number or .
+      if (resetNext && ("0123456789.".includes(val))) {
+        current = "";
+        resetNext = false;
+      } else if (resetNext) {
+        resetNext = false;
+      }
+
+      // Prevent multiple decimal points in the same number part
+      if (val === ".") {
+        let parts = current.split(/[\+\−\*÷]/);
+        let last = parts[parts.length - 1];
+        if (last.includes(".")) return;
+      }
+
+      current += val;
+      updateDisplay();
+    });
+  });
+</script>
+</body>
+</html>
