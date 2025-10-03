@@ -1,13 +1,13 @@
 body {
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
-  background: #6c6c6d;
-  color: #222;
+  background: linear-gradient(135deg, #133b43, #6a1b9a);
+  color: #00f9ff;
 }
 
 nav {
-  background: #263262;
-  color: #fff;
+  background: #000000cc;
+  color: #ff00ea;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +15,13 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 0 15px #ff00ea7a;
 }
 
 nav .brand {
   font-size: 1.6em;
   font-weight: bold;
+  color: #ff00ea;
 }
 
 nav ul {
@@ -34,52 +36,65 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #fff;
+  color: #00f9ff;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  font-weight: 600;
+  font-size: 1em;
+  transition: color 0.2s ease-in-out;
+  text-shadow: 0 0 4px #00f9ff8f;
 }
 
 nav ul li a:hover {
-  color: #fca61f;
+  color: #ff00ea;
+  text-shadow: 0 0 8px #ff00ea;
 }
 
 .hero {
-  background: linear-gradient(115deg, #263262 60%, #fca61f 100%);
-  color: #fff;
+  background: linear-gradient(115deg, #133b43 70%, #6a1b9a 100%);
+  color: #ff00ea;
   text-align: center;
-  padding: 70px 24px; 
+  padding: 70px 24px;
+  text-shadow: 0 0 5px #ff00ea88;
 }
 
 .hero h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+  font-weight: 900;
 }
+
 .hero span {
-  color: #fca61f;
+  color: #00f9ff;
 }
 
 .hero .btn {
-  background: #fca61f;
-  color: #fff;
+  background: #ff00ea;
+  color: #000;
   text-decoration: none;
   padding: 13px 35px;
   border-radius: 26px;
-  font-weight: 600;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-  transition: background 0.16s;
+  font-weight: 700;
+  box-shadow: 0 0 15px #ff00ea88, 0 0 50px #ff00ea55;
+  border: none;
+  transition: background 0.16s ease-in-out, color 0.16s ease-in-out;
+  cursor: pointer;
 }
+
 .hero .btn:hover {
-  background: #263262;
+  background: #00f9ff;
+  color: #000;
+  box-shadow: 0 0 18px #00f9ffdd, 0 0 60px #00f9ff99;
 }
 
 section {
   max-width: 950px;
   margin: 45px auto;
-  background: #fff;
-  border-radius: 10px;
+  background: #0a011acc;
+  border-radius: 15px;
   padding: 40px 28px;
-  box-shadow: 0 4px 24px rgba(38, 50, 98, 0.07);
+  box-shadow: 0 0 16px #6a1b9a88;
+  color: #00f9ffcd;
+  text-shadow: 0 0 5px #00f9ff66;
 }
 
 .about-content {
@@ -87,10 +102,12 @@ section {
   align-items: center;
   gap: 38px;
 }
+
 .about-content img {
   width: 150px;
   border-radius: 50%;
-  box-shadow: 0 3px 15px rgba(38, 50, 98, 0.11);
+  box-shadow: 0 0 15px #ff00eaaa;
+  border: 2px solid #ff00ea;
 }
 
 .skills-list {
@@ -99,13 +116,14 @@ section {
   gap: 16px;
   margin-top: 22px;
 }
+
 .skills-list span {
-  background: #eef2f7;
+  background: #191933cc;
   padding: 8px 18px;
   border-radius: 20px;
   font-weight: 600;
-  color: #263262;
-  box-shadow: 0 2px 8px rgba(38,50,98,0.04);
+  color: #00f9ff;
+  box-shadow: 0 0 12px #00f9ffbb;
 }
 
 .portfolio-grid {
@@ -113,43 +131,52 @@ section {
   gap: 28px;
   flex-wrap: wrap;
   margin-top: 22px;
+  justify-content: center;
 }
+
 .portfolio-item {
-  background: #eef2f7;
+  background: #191933cc;
   border-radius: 13px;
   padding: 20px;
   width: 260px;
-  box-shadow: 0 2px 12px rgba(38,50,98,0.05);
+  box-shadow: 0 0 16px #ff00eaaa;
   text-align: center;
   transition: transform 0.2s;
 }
+
 .portfolio-item:hover {
   transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 20px 5px #00f9ff;
 }
+
 .portfolio-item img {
   width: 100%;
   max-width: 180px;
   border-radius: 10px;
   margin-bottom: 13px;
+  box-shadow: 0 0 12px #00f9ffaa;
 }
 
 .btn {
-  background: #263262;
-  color: #fff;
+  background: #000000dd;
+  color: #ff00ea;
   border: none;
   padding: 12px 34px;
   border-radius: 22px;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
   display: inline-block;
   margin-top: 10px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(38,50,98,0.13);
+  box-shadow: 0 0 16px #ff00eacc, 0 0 36px #ff00ea88;
   font-size: 1em;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
+
 .btn:hover {
-  background: #fca61f;
+  background: #00f9ff;
+  color: #000;
+  box-shadow: 0 0 18px #00f9ffdd, 0 0 60px #00f9ffbb;
 }
 
 form {
@@ -159,28 +186,44 @@ form {
   flex-direction: column;
   gap: 12px;
 }
+
 input, textarea {
   font-family: inherit;
   padding: 8px;
-  border: 1px solid #cdd1dd;
+  border: 1px solid #330066cc;
   border-radius: 7px;
+  background: #100021dd;
+  color: #00f9ff;
+  box-shadow: 0 0 10px #00f9ff99 inset;
 }
+
 label {
-  font-weight: bold;
-  color: #263262;
+  font-weight: 700;
+  color: #ff00ea;
+  text-shadow: 0 0 8px #ff00eaaa;
 }
-.contact-links, .contact-links a {
+
+.contact-info, .contact-info a {
   margin-top: 15px;
-  color: #263262;
+  color: #00f9ff;
+  text-decoration: none;
+  text-shadow: 0 0 7px #00f9ffbb;
+}
+
+.contact-info a:hover {
+  text-shadow: 0 0 10px #ff00ea;
+  color: #ff00ea;
+  transition: all 0.3s ease;
 }
 
 footer {
-  background: #263262;
-  color: #fff;
+  background: #000000dd;
+  color: #ff00ea;
   text-align: center;
   padding: 24px 0;
   margin-top: 32px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 30px #ff00eabb inset;
 }
 
 @media (max-width: 750px) {
