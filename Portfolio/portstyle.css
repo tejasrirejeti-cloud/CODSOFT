@@ -207,12 +207,12 @@ label {
   margin-top: 18px;
   display: flex;
   align-items: center;
-  gap: 32px; /* Space between icons */
+  gap: 32px;
 }
 
 .contact-info a {
   color: #00f9ff;
-  font-size: 2.4em; /* Bigger icons */
+  font-size: 2.4em;
   transition: color 0.2s, text-shadow 0.2s, transform 0.18s;
   text-shadow: 0 0 7px #00f9ffbb;
 }
@@ -220,9 +220,8 @@ label {
 .contact-info a:hover {
   color: #ff00ea;
   text-shadow: 0 0 16px #ff00ea, 0 0 24px #00f9ff;
-  transform: scale(1.15); /* Slight grow effect */
+  transform: scale(1.15);
 }
-
 
 footer {
   background: #000000dd;
@@ -248,13 +247,17 @@ footer {
     padding: 24px 10px;
   }
   nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Keep horizontal on mobile */
+    align-items: center;
     padding: 16px 12px;
   }
   nav ul {
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 7px;
+    flex-direction: row; /* Keep nav links horizontal */
+    gap: 12px;
+    margin-top: 0;
+    overflow-x: auto; /* Allow horizontal scroll if needed */
+  }
+  nav ul li {
+    margin-left: 16px; /* Adjust spacing on mobile */
   }
 }
